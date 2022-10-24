@@ -1,0 +1,85 @@
+* {
+  margin : 0;
+  padding : 0;
+  box-sizing : border-box;
+  text-decoration : none;
+  list-style : none;
+  outline : none;
+}
+
+input:focus {
+    outline	: none !important;
+}
+
+.site_info {
+    width : 100vw;
+    height : 10vh;
+    background : #edebee;
+    text-align : center;
+}
+
+.page_container {
+	width : 100vw;
+	height : 90vh;
+	background : #edebee;
+	display : flex;
+	justify-content : center;
+	align-items	: center;
+}
+
+.login_form_container{
+	background : #FFFFFF;
+	display : flex;
+	flex-direction : row;
+	height : 600px;
+}
+
+.login_form_imgbox {
+    background : #EDEBEE;
+    width : 410px;
+}
+
+.login_form_box {
+    width : 400px;
+    height : 600px;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+	padding : 40px;
+	border : 1px solid #DDDDDD;
+}
+
+.login_input_box {
+	width : 300px;
+	height : 110px;
+}
+
+.login_btn_wrap{
+	margin-top : 40px;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+}
+
+.login_btn {
+	width : 300px;
+	height : 30px;
+	color : white;
+	border : 0;
+	border-radius : 4px;
+	background : linear-gradient(162deg, rgba(105,163,255,1) 0%, rgba(43,125,254,1) 50%, rgba(32,124,229,1) 100%);
+	font-weight : bold;
+	font-size : 14px;
+}
+
+.login_btn_img {
+	border : 0;
+	margin-bottom : 5px;
+}
+
+.login_btn_wrap span {
+	margin-top : 10px;
+	text-decoration : none;
+	font-size : 11px;
+	color : gray;
+}
