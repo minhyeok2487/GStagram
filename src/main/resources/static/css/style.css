@@ -83,3 +83,447 @@ input:focus {
 	font-size : 11px;
 	color : gray;
 }
+
+/*---------------------------------------------------*/
+/*페이지의 중앙을 잡아줄 컨테이너*/
+.container {
+  width: 100%;
+  min-height: 100%;
+}
+
+/*메인태그 기본정의*/
+.loginMain {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+}
+
+/*모든 버튼은 포인터*/
+button {
+  cursor: pointer;
+}
+
+/*로그인 섹션*/
+.login {
+  width: 100%;
+  max-width: 935px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*로그인폼과 가입하기를 감싸는 컨테이너*/
+.login__form__container {
+  width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*로그인폼, 가입하기 박스 디자인*/
+.login__form,
+.login__register {
+  padding: 10px 0 20px;
+  text-align: center;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  background-color: #fff;
+}
+
+/*로고이미지를 담을 블록요소*/
+.login__form h1 {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*로고 이미지*/
+.login__form h1 img {
+  width: 175px;
+}
+
+/*로그인 인풋박스*/
+.login__input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0 40px;
+}
+
+/*로그인 인풋태그*/
+.login__input input {
+  width: 100%;
+  height: 38px;
+  padding: 9px 0 7px 8px;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+/*로그인 버튼*/
+.login__input button {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #0095f6;
+  color: #fff;
+  margin-top: 15px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: background 0.5s;
+}
+
+/*버튼 hover 액션*/
+.login__input button:hover {
+  background: #0f75b9;
+}
+
+/* login__horizon 붙은건 그냥 hr을 디자인한거. */
+.login__horizon {
+  display: flex;
+  margin-top: 20px;
+  padding: 0 40px;
+  align-items: center;
+}
+
+.login__horizon .br {
+  width: 40%;
+  height: 1px;
+  border-top: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+}
+
+.login__horizon .or {
+  width: 20%;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* 페이스북로그인 영역 */
+.login__facebook {
+  padding: 0 40px;
+  margin-top: 15px;
+}
+/*페이스북 로그인 버튼*/
+.login__facebook button {
+  background-color: #fff;
+  width: 100%;
+  height: 30px;
+  border: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+/*페이스북 로그인 색깔*/
+.login__facebook button i,
+span {
+  color: #385185;
+}
+
+/*가입페이지로 이동*/
+.login__register {
+  margin-top: 10px;
+  line-height: 60px;
+  padding: 0;
+}
+
+/*계정이 없으신가요?*/
+.login__register span {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+/*가입페이지 이동버튼*/
+.login__register a {
+  color: #0095f6;
+}
+
+/* 버튼디자인 */
+.cta {
+  margin-right: 10px;
+  padding: 5px 9px;
+  border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
+  border-radius: 4px;
+  color: #262626;
+  font-weight: bold;
+  background: transparent;
+}
+
+/*버튼 블루*/
+.cta.blue {
+  background: #0095f6 !important;
+  color: #fff !important;
+}
+
+.header {
+  height: 60px;
+  background: #fff;
+  width: 100%;
+  border: 1px solid gainsboro;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 935px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height : 59px;
+}
+
+.navi > .navi-list {
+  display: flex;
+}
+
+.navi > .navi-list .navi-item {
+  flex: 1;
+  text-align: center;
+  margin: 0 15px;
+  display: flex;
+}
+
+.navi > .navi-list .navi-item a i {
+  font-size: 26px;
+  color: #808080;
+  align-items: center;
+  margin-top : 18px;
+}
+
+@media screen and (max-width: 935px) {
+  .header .container {
+    width: 100%;
+  }
+}
+
+/*메인*/
+.story {
+  padding-top: 54px;
+}
+
+/*컨테이너*/
+.story .container {
+  padding-top: 30px;
+  width: 935px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+/*게시물리스트*/
+.main .container .story-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*게시물 리스트 아이템*/
+.main .container .story-list .story-list__item {
+  margin-bottom: 30px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+
+/*리스트 아이템 헤더부분*/
+.main .container .story-list .story-list__item .sl__item__header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+/*리스트 아이템 헤더 div*/
+.main .container .story-list .story-list__item .sl__item__header div {
+  margin-left: 10px;
+}
+
+/*리스트 아이템 헤더 이미지영역 박스*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__header
+  div:nth-child(1) {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  border-radius: 50%;
+  position: relative;
+}
+
+/*리스트 아이템 헤더 실제이미지*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__header
+  div:nth-child(1)
+  img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* 게시물 이미지 박스*/
+.main .container .story-list .story-list__item .sl__item__img {
+  height: 600px;
+  min-height: 300px;
+}
+
+/* 게시물 이미지*/
+.main .container .story-list .story-list__item .sl__item__img img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 게시물 이미지 밑에 영역들 */
+.main .container .story-list .story-list__item .sl__item__contents {
+  display: flex;
+  flex-direction: column;
+}
+
+/*좋아요 버튼영역*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+  .sl__item__contents__icon {
+  height: 40px;
+  padding: 5px 0;
+}
+
+/*좋아요 실제 버튼*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+  .sl__item__contents__icon
+  button {
+  background-color: transparent;
+  width: 40px;
+  font-size: 25px;
+
+  border: 0;
+  cursor: pointer;
+}
+
+/*게시물 내용*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+  .sl__item__contents__content {
+  padding: 5px 15px;
+}
+
+/*게시물 like 갯수스타일*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents .like{
+	background-color: transparent;
+	border: 0;
+	color: #aaa;
+	font-size: 14px;
+	margin-bottom: 5px;
+	text-indent: 15px;
+}
+/*게시물 좋아요 count값 */
+.main
+  .container
+  .story-list
+  .story-list__item
+.sl__item__contents .like b{
+	margin-right: 5px;
+}
+
+/*태그영역*/
+.sl__item__contents__tags{
+  height: 40px;
+  padding: 5px 10px;
+  color: #0080ff;
+}
+
+/*코멘트 = 댓글 */
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+  .sl__item__contents__comment
+  {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  padding: 0 15px;
+  margin-bottom: 5px;
+}
+
+/*댓글 삭제버튼*/
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+.sl__item__contents__comment button{ border: none; outline: none; background: #fff; cursor: pointer;}
+
+/* 댓글 입력창*/
+.main .container .story-list .story-list__item .sl__item__input {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+}
+
+/*입력 인풋*/
+.main .container .story-list .story-list__item .sl__item__input input {
+  flex: 9;
+  height: 56px;
+  border: 0;
+  padding-left: 15px;
+}
+/* 입력하기 버튼 */
+.main .container .story-list .story-list__item .sl__item__input button {
+  flex: 1;
+  height: 56px;
+  border: 0;
+  background-color: transparent;
+  font-weight: 500;
+  color: #0095f6;
+  font-size: 14px;
+}
+
+/* Event */
+.main
+  .container
+  .story-list
+  .story-list__item
+  .sl__item__contents
+  .sl__item__contents__icon
+  button:first-child
+  .active {
+  color: red;
+}
+
+.profile-image {
+  border: 2px solid #8a3ab8;
+}
