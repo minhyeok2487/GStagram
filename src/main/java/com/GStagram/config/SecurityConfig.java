@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화됨.
 		// 인증이 되지 않은 모든 사용자는 로그인 페이지로 이동
+		http.headers().frameOptions().disable();
 		http.csrf().disable();
 		http
 			.authorizeRequests() // URL별 관리
