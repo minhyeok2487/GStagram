@@ -13,6 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화됨
 		// super.configure(http);
+		http.csrf().disable();
 		http.authorizeRequests()
 			.antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**")
 			.authenticated()
