@@ -2,9 +2,14 @@ package com.GStagram.web;
 
 import com.GStagram.domain.user.User;
 import com.GStagram.web.dto.auth.SignupDto;
+import java.util.HashMap;
+import java.util.Map;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.GStagram.service.AuthService;
@@ -26,7 +31,13 @@ public class AuthController {
 	}
 
 	@PostMapping("/auth/signup")
-	public String signup(SignupDto signupDto) { // key=value (x-www-form-urlencoded)
+	public String signup(@Valid SignupDto signupDto, BindingResult bindingResult) { // key=value (x-www-form-urlencoded)
+		if(bindingResult.hasErrors()) {
+			Map<String, String> errorMap = new HashMap<>();
+			for(FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+		}
 		log.info(signupDto.toString());
 		User user = signupDto.toEntity();
 		log.info(user.toString());
