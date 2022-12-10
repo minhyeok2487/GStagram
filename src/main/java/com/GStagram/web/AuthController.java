@@ -1,6 +1,7 @@
 package com.GStagram.web;
 
 import com.GStagram.domain.user.User;
+import com.GStagram.handler.ex.CustomValidationException;
 import com.GStagram.web.dto.auth.SignupDto;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.GStagram.service.AuthService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller // 1.IoC 2.파일을 리턴하는 컨트롤러
@@ -37,12 +39,14 @@ public class AuthController {
 			for(FieldError error : bindingResult.getFieldErrors()) {
 				errorMap.put(error.getField(), error.getDefaultMessage());
 			}
+			throw new CustomValidationException("유효성 검사 실패",errorMap);
+		} else {
+			log.info(signupDto.toString());
+			User user = signupDto.toEntity();
+			log.info(user.toString());
+			User userEntity = authService.signupReg(user);
+			log.info(userEntity.toString());
+			return "auth/signin";
 		}
-		log.info(signupDto.toString());
-		User user = signupDto.toEntity();
-		log.info(user.toString());
-		User userEntity = authService.signupReg(user);
-		log.info(userEntity.toString());
-		return "auth/signin";
 	}
 }
