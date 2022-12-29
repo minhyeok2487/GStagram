@@ -1,11 +1,14 @@
 package com.GStagram.web.dto.user;
 
 import com.GStagram.domain.user.User;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class UserUpdateDto {
+	@NotBlank
 	private String name; //필수
+	@NotBlank
 	private String password; //필수
 	private String website;
 	private String bio;

@@ -1,9 +1,12 @@
 package com.GStagram.handler;
 
+import com.GStagram.handler.ex.CustomValidationApiException;
 import com.GStagram.handler.ex.CustomValidationException;
 import com.GStagram.util.Script;
 import com.GStagram.web.dto.CMRespDto;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +27,10 @@ public class ControllerExceptionHandler {
 		// 2. Ajax통신 - CMRespDto
 		// 3. Android 통신 - CMRespDto
 		return Script.back(e.getErrorMap().toString());
+	}
+
+	@ExceptionHandler(CustomValidationApiException.class)
+	public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
+		return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
 	}
 }
