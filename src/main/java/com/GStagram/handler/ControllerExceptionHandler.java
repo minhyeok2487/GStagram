@@ -1,5 +1,6 @@
 package com.GStagram.handler;
 
+import com.GStagram.handler.ex.CustomApiException;
 import com.GStagram.handler.ex.CustomValidationApiException;
 import com.GStagram.handler.ex.CustomValidationException;
 import com.GStagram.util.Script;
@@ -32,5 +33,10 @@ public class ControllerExceptionHandler {
 	@ExceptionHandler(CustomValidationApiException.class)
 	public ResponseEntity<?> validationApiException(CustomValidationApiException e) {
 		return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CustomApiException.class)
+	public ResponseEntity<?> apiException(CustomApiException e) {
+		return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), null), HttpStatus.BAD_REQUEST);
 	}
 }
