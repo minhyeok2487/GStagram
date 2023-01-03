@@ -2,19 +2,29 @@ package com.GStagram.service;
 
 import com.GStagram.domain.user.User;
 import com.GStagram.domain.user.UserRepository;
+import com.GStagram.handler.ex.CustomException;
 import com.GStagram.handler.ex.CustomValidationApiException;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.util.Supplier;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	public User 회원프로필(Long userId) {
+		// SELECT * FROM image WHERE userId = :userId; -> JPA
+		User userEntity = userRepository.findById(userId).orElseThrow(()->{
+			throw new CustomException("해당 프로필 페이지는 없는 페이지입니다.");
+		});
+		return userEntity;
+	}
 
 	@Transactional
 	public User 회원수정(long id, User user) {
