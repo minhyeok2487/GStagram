@@ -1,6 +1,7 @@
 package com.GStagram.service;
 
 import com.GStagram.config.auth.PrincipalDetails;
+import com.GStagram.domain.Image.Image;
 import com.GStagram.domain.Image.ImageRepository;
 import com.GStagram.web.dto.image.ImageUploadDto;
 import java.nio.file.Files;
@@ -36,5 +37,11 @@ public class ImageService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// image 테이블에 저장
+		Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getUser());
+		Image imageEntity = imageRepository.save(image);
+		log.info(imageEntity.toString());
 	}
+
 }

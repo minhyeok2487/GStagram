@@ -2,6 +2,8 @@ package com.GStagram.web;
 
 import com.GStagram.config.auth.PrincipalDetails;
 import com.GStagram.domain.user.User;
+import com.GStagram.handler.ex.CustomValidationApiException;
+import com.GStagram.handler.ex.CustomValidationException;
 import com.GStagram.service.ImageService;
 import com.GStagram.web.dto.image.ImageUploadDto;
 import javax.servlet.http.HttpSession;
@@ -37,6 +39,9 @@ public class ImageController {
 	@PostMapping("/image")
 	public String imageUpload(ImageUploadDto imageUploadDto, @AuthenticationPrincipal
 		PrincipalDetails principalDetails) {
+		if(imageUploadDto.getFile().isEmpty()) {
+			throw new CustomValidationException("이미지가 첨부되지 않았습니다.",null);
+		}
 		// 서비스 호출
 		imageService.uploadImage(imageUploadDto, principalDetails);
 
