@@ -27,7 +27,7 @@ public class ImageService {
 	public void uploadImage(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename();
-		log.info(imageFileName);
+		//log.info(imageFileName);
 
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 
@@ -41,7 +41,7 @@ public class ImageService {
 		// image 테이블에 저장
 		Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getUser());
 		Image imageEntity = imageRepository.save(image);
-		log.info(imageEntity.toString());
+		//log.info(imageEntity.toString());
 	}
 
 }

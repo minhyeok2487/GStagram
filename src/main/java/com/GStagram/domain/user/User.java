@@ -58,7 +58,7 @@ public class User {
 	// LAZY (default) : User를 Select할 때 해당 User id로 등록된 images를 가져오지않는다.
 	// -> getImages() 함수의 images들이 호출될 때 가져온다.
 	// Eager : User를 Select할 때 해당 User id로 등록된 image들을 전부 Join해서 가져온다.
-	private List<Image> imges; // 양방향 배핑
+	private List<Image> images; // 양방향 배핑
 	private LocalDateTime createDate;
 
 	@PrePersist // 디비에 INSERT 되기 직전에 실행

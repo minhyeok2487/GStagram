@@ -5,6 +5,7 @@ package com.GStagram.domain.Image;
 import com.GStagram.domain.user.User;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +36,7 @@ public class Image { // N, 1
 	// - DB에 그 저장된 경로를 insert
 	private String postImageUrl;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private User user;
 
