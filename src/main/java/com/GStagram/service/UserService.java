@@ -39,11 +39,18 @@ public class UserService {
 		String rawPassword = user.getPassword();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 		userEntity.setPassword(encPassword);
-		userEntity.setBio(user.getBio());
-		userEntity.setWebsite(user.getWebsite());
-		userEntity.setPhone(user.getPhone());
-		userEntity.setGender(user.getGender());
-
+		if(!user.getBio().equals("")) {
+			userEntity.setBio(user.getBio());
+		}
+		if(!user.getWebsite().equals("")) {
+			userEntity.setWebsite(user.getWebsite());
+		}
+		if(!user.getPhone().equals("")) {
+			userEntity.setPhone(user.getPhone());
+		}
+		if(!user.getGender().equals("")) {
+			userEntity.setGender(user.getGender());
+		}
 		return userEntity;
 		// 더티체킹이 일어나서 업데이트가 완료됨
 	}

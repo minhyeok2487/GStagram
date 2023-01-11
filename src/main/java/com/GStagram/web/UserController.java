@@ -25,6 +25,10 @@ public class UserController {
 	public String profile(@PathVariable Long id, Model model) {
 		User userEntity = userService.회원프로필(id);
 		model.addAttribute("user", userEntity);
+		model.addAttribute("website", userEntity.getWebsite());
+		model.addAttribute("bio", userEntity.getBio());
+		model.addAttribute("gender", userEntity.getGender());
+		model.addAttribute("phone", userEntity.getPhone());
 		return "user/profile";
 	}
 

@@ -3,6 +3,7 @@ package com.GStagram.domain.user;
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장할 수 있는 API를 제공)
 
 import com.GStagram.domain.Image.Image;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Column;
@@ -53,6 +54,7 @@ public class User {
 	private String role; // 권한
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"user"})
 	// 나는 연관관계의 주인이 아니다. 그러므로 테이블에 컬럼을 만들지마라
 	// User를 Select할 때 해당 User id로 등록된 images들을 다 가져온다
 	// LAZY (default) : User를 Select할 때 해당 User id로 등록된 images를 가져오지않는다.
