@@ -3,6 +3,7 @@ package com.GStagram.web;
 import com.GStagram.config.auth.PrincipalDetails;
 import com.GStagram.domain.user.User;
 import com.GStagram.service.UserService;
+import com.GStagram.web.dto.user.UserProfileDto;
 import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +22,15 @@ public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping("/user/{id}")
-	public String profile(@PathVariable Long id, Model model) {
-		User userEntity = userService.회원프로필(id);
-		model.addAttribute("user", userEntity);
-		model.addAttribute("website", userEntity.getWebsite());
-		model.addAttribute("bio", userEntity.getBio());
-		model.addAttribute("gender", userEntity.getGender());
-		model.addAttribute("phone", userEntity.getPhone());
+	@GetMapping("/user/{pageUserId}")
+	public String profile(@PathVariable Long pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		UserProfileDto userEntity = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
+		model.addAttribute("user", userEntity.getUser());
+		model.addAttribute("website", userEntity.getUser().getWebsite());
+		model.addAttribute("bio", userEntity.getUser().getBio());
+		model.addAttribute("gender", userEntity.getUser().getGender());
+		model.addAttribute("phone", userEntity.getUser().getPhone());
+		model.addAttribute("imageSize", userEntity.getImageCount());
 		return "user/profile";
 	}
 
