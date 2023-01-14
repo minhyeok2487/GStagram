@@ -1,5 +1,6 @@
 package com.GStagram.service;
 
+import com.GStagram.domain.subscribe.SubscribeRepository;
 import com.GStagram.domain.user.User;
 import com.GStagram.domain.user.UserRepository;
 import com.GStagram.handler.ex.CustomException;
@@ -18,6 +19,7 @@ public class UserService {
 
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final SubscribeRepository subscribeRepository;
 
 	public UserProfileDto 회원프로필(Long pageUserId, Long principalId) {
 		UserProfileDto dto = new UserProfileDto();
@@ -28,6 +30,10 @@ public class UserService {
 		dto.setUser(userEntity);
 		dto.setPageOwnerState(pageUserId == principalId);
 		dto.setImageCount(userEntity.getImages().size());
+		int subscribeState = subscribeRepository.mSubscribeState(principalId,pageUserId);
+		int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
+		dto.setSubscribeState(subscribeState == 1);
+		dto.setSubscriptionCount(subscribeCount);
 		return dto;
 	}
 
