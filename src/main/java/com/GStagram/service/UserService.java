@@ -21,7 +21,7 @@ public class UserService {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	private final SubscribeRepository subscribeRepository;
 
-	public UserProfileDto 회원프로필(Long pageUserId, Long principalId) {
+	public UserProfileDto 회원프로필(int pageUserId, int principalId) {
 		UserProfileDto dto = new UserProfileDto();
 		// SELECT * FROM image WHERE userId = :userId; -> JPA
 		User userEntity = userRepository.findById(pageUserId).orElseThrow(()->{
@@ -33,12 +33,12 @@ public class UserService {
 		int subscribeState = subscribeRepository.mSubscribeState(principalId,pageUserId);
 		int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
 		dto.setSubscribeState(subscribeState == 1);
-		dto.setSubscriptionCount(subscribeCount);
+		dto.setSubscribeCount(subscribeCount);
 		return dto;
 	}
 
 	@Transactional
-	public User 회원수정(long id, User user) {
+	public User 회원수정(int id, User user) {
 		// 1. 영속화
 		User userEntity = userRepository.findById(id).orElseThrow(() -> {
 			return new CustomValidationApiException("찾을 수 없는 id입니다.");

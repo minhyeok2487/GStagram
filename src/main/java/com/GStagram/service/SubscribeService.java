@@ -13,7 +13,7 @@ public class SubscribeService {
 	private final SubscribeRepository subscribeRepository;
 
 	@Transactional
-	public void subscribe(Long fromUserId, Long toUserId) {
+	public void subscribe(int fromUserId, int toUserId) {
 		try {
 			subscribeRepository.mSubscribe(fromUserId, toUserId);
 		} catch (Exception e) {
@@ -23,7 +23,7 @@ public class SubscribeService {
 	}
 
 	@Transactional
-	public void unsubscribe(Long fromUserId, Long toUserId) {
+	public void unsubscribe(int fromUserId, int toUserId) {
 		subscribeRepository.mUnSubscribe(fromUserId, toUserId);
 	}
 }

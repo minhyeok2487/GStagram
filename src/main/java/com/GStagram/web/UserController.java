@@ -1,5 +1,7 @@
 package com.GStagram.web;
 
+import static java.rmi.server.LogStream.log;
+
 import com.GStagram.config.auth.PrincipalDetails;
 import com.GStagram.domain.user.User;
 import com.GStagram.service.UserService;
@@ -23,14 +25,14 @@ public class UserController {
 	private final UserService userService;
 
 	@GetMapping("/user/{pageUserId}")
-	public String profile(@PathVariable Long pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		UserProfileDto userEntity = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
-		model.addAttribute("user", userEntity.getUser());
-		model.addAttribute("website", userEntity.getUser().getWebsite());
-		model.addAttribute("bio", userEntity.getUser().getBio());
-		model.addAttribute("gender", userEntity.getUser().getGender());
-		model.addAttribute("phone", userEntity.getUser().getPhone());
-		model.addAttribute("imageSize", userEntity.getImageCount());
+	public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
+		model.addAttribute("dto", dto);
+		if(pageUserId == principalDetails.getUser().getId()) {
+			model.addAttribute("check",true);
+		} else {
+			model.addAttribute("check", false);
+		}
 		return "user/profile";
 	}
 

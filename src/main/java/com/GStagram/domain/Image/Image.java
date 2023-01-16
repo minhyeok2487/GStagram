@@ -3,6 +3,7 @@ package com.GStagram.domain.Image;
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장할 수 있는 API를 제공)
 
 import com.GStagram.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class Image { // N, 1
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략을 데이터베이스를 따라간다.
-	private Long id;
+	private int id;
 
 	private String caption;
 
@@ -38,6 +39,7 @@ public class Image { // N, 1
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
+	@JsonIgnoreProperties({"images"})
 	private User user;
 
 	private LocalDateTime createDate;
