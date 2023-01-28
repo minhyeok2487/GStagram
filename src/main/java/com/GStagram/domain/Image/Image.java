@@ -2,9 +2,11 @@ package com.GStagram.domain.Image;
 
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장할 수 있는 API를 제공)
 
+import com.GStagram.domain.likes.Likes;
 import com.GStagram.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,14 +14,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Entity
 @Data
@@ -41,6 +46,14 @@ public class Image { // N, 1
 	@JoinColumn(name = "userId")
 	@JsonIgnoreProperties({"images"})
 	private User user;
+
+	// 이미지 좋아요
+	@JsonIgnoreProperties({"image"})
+	@OneToMany(mappedBy = "image")
+	private List<Likes> likes;
+
+	@Transient // DB에 컬럼이 만들어지지 않는다.
+	private boolean likeState;
 
 	private LocalDateTime createDate;
 

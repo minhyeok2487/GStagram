@@ -2,6 +2,7 @@ package com.GStagram.domain.likes;
 
 import com.GStagram.domain.Image.Image;
 import com.GStagram.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,7 @@ public class Likes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략을 데이터베이스를 따라간다.
 	private int id;
+
 
 	@JoinColumn(name = "imageId")
 	@ManyToOne
