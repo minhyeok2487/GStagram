@@ -8,13 +8,15 @@ import java.util.Map;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.context.internal.ThreadLocalSessionContext;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.GStagram.service.AuthService;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller // 1.IoC 2.파일을 리턴하는 컨트롤러

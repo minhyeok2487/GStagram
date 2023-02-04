@@ -32,6 +32,12 @@ public class UserApiController {
 	private final UserService userService;
 	private final SubscribeService subscribeService;
 
+
+	@GetMapping("api/user/getUserId")
+	public ResponseEntity<?> getUserId(@AuthenticationPrincipal PrincipalDetails principalDetails){
+		return new ResponseEntity<>(new CMRespDto<>(1, "유저 ID 가져오기 성공", principalDetails.getUser().getId()), HttpStatus.OK);
+	}
+
 	@GetMapping("api/user/{pageUserId}/subscribe")
 	public ResponseEntity<?> subscribeList(@PathVariable int pageUserId, @AuthenticationPrincipal PrincipalDetails principalDetails){
 		List<SubscribeDto> subscribeDto = subscribeService.구독리스트(principalDetails.getUser().getId(), pageUserId);

@@ -41,6 +41,7 @@ public class Likes {
 	private Image image; // 하나의 이미지는 좋아요 여러개 1 : N
 
 	// 오류가 터지고 나서 잡기
+	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name = "userId")
 	@ManyToOne
 	private User user; // 한 명의 유저는 좋아요 여러개 1 : N

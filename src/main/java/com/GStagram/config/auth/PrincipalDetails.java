@@ -3,6 +3,7 @@ package com.GStagram.config.auth;
 import com.GStagram.domain.user.User;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.servlet.http.HttpSession;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class PrincipalDetails implements UserDetails {
 
 	private User user;
+
 
 	public PrincipalDetails(User user) {
 		this.user = user;
