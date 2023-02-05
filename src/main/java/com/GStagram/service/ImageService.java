@@ -28,6 +28,11 @@ public class ImageService {
 	@Value("${file.path}")
 	private String uploadFolder;
 
+	@Transactional(readOnly = true)
+	public List<Image> popular() {
+		return imageRepository.mPopular();
+	}
+
 	public void uploadImage(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"_"+imageUploadDto.getFile().getOriginalFilename();

@@ -5,35 +5,12 @@
 
         <!--인기게시글 갤러리(GRID배치)-->
         <div class="popular-gallery">
-
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
-            <div class="p-img-box">
-                <a href="/user/profile"> <img src="/images/home.jpeg" />
-                </a>
-            </div>
+            {{#images}}
+                <div class="p-img-box">
+                    <a href="/user/{{user.id}}"> <img src="/upload/{{postImageUrl}}" />
+                    </a>
+                </div>
+            {{/images}}
         </div>
 
     </div>

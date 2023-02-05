@@ -14,4 +14,7 @@ import org.springframework.data.repository.query.Param;
 public interface ImageRepository extends JpaRepository<Image,Integer> {
 	@Query(value = "SELECT * FROM image WHERE user_id IN (SELECT TO_USER_ID FROM subscribe WHERE FROM_USER_ID = :principalId) ORDER BY id DESC",nativeQuery = true)
 	Page<Image> mStory(@Param("principalId") int principalId, Pageable pageable);
+
+	@Query(value = "SELECT i.* FROM image i INNER JOIN (SELECT image_id, count(image_id) likeCount FROM likes GROUP BY image_id) c ON i.id = c.image_id ORDER BY c.likeCount DESC", nativeQuery = true)
+	List<Image> mPopular();
 }

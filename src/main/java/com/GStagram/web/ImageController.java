@@ -1,20 +1,24 @@
 package com.GStagram.web;
 
 import com.GStagram.config.auth.PrincipalDetails;
+import com.GStagram.domain.Image.Image;
 import com.GStagram.domain.user.User;
 import com.GStagram.handler.ex.CustomValidationApiException;
 import com.GStagram.handler.ex.CustomValidationException;
 import com.GStagram.service.ImageService;
 import com.GStagram.web.dto.image.ImageUploadDto;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,7 +35,9 @@ public class ImageController {
 	}
 
 	@GetMapping("/image/popular")
-	public String popular() {
+	public String popular(Model model) {
+		List<Image> images = imageService.popular();
+		model.addAttribute("images", images);
 		return "image/popular";
 	}
 
