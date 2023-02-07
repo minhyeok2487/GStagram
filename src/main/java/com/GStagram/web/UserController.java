@@ -29,6 +29,7 @@ public class UserController {
 	public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
 		model.addAttribute("dto", dto);
+		model.addAttribute("principal", principalDetails.getUser());
 		if(pageUserId == principalDetails.getUser().getId()) {
 			model.addAttribute("check",true);
 		} else {
