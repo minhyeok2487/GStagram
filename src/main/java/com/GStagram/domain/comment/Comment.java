@@ -39,6 +39,7 @@ public class Comment { // N, 1
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonIgnoreProperties({"images"})
 	private User user;
 
 	@ManyToOne
